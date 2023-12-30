@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\Pengunjung\PengunjungController;
 use App\Http\Controllers\Users\UserController;
@@ -38,6 +39,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::get('get-data',  [PengunjungController::class, 'getPengunjung']);
         Route::post('save-data',  [PengunjungController::class, 'savePengunjung']);
         Route::delete('delete-data',  [PengunjungController::class, 'deletePengunjung']);
+    });
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('get-data',  [MenuController::class, 'getMenu']);
     });
 });
 
