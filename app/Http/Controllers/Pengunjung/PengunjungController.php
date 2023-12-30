@@ -8,11 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Pengunjung;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PengunjungController extends Controller
 {
     public function index(){
-
+        $data = null;
+        $response = Http::get('http://127.0.0.1:8000/api/pegawai/get-data', []);
+        return view('pengunjung/index', compact('data'));
     }
 
     public function getPengunjung (Request $request) {
